@@ -46,6 +46,18 @@ abstract class Endpoint implements LoggerAwareInterface
     }
 
     /**
+     * @return Array
+     */
+    public static function all()
+    {
+        return [
+            'verification' => Operation\Verification::class,
+            'account-creation' => Operation\AccountCreation::class,
+            'account-update' => Operation\AccountUpdate::class,
+        ];
+    }
+
+    /**
      * @param callable $callback
      *
      * @throws \InvalidArgumentException if the callback is not callable.
