@@ -1,6 +1,8 @@
 # `La Presse Libre` Client Library
 
-Unofficial PHP SDK for the project [La Presse Libre](https://github.com/NextINpact/LaPresseLibreSDK). The difference with the official package offered by NextINpact is compatibility with PSR4, PSR7 and php7 environment.
+[![Build Status](https://secure.travis-ci.org/mediapart/lapresselibre.svg?branch=master)](http://travis-ci.org/mediapart/lapresselibre) [![Code Coverage](https://codecov.io/gh/mediapart/lapresselibre/branch/master/graph/badge.svg)](https://scrutinizer-ci.com/g/mediapart/lapresselibre) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/mediapart/lapresselibre/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mediapart/lapresselibre) [![Total Downloads](https://poser.pugx.org/mediapart/lapresselibre/downloads.png)](https://packagist.org/packages/mediapart/lapresselibre) [![Latest Stable Version](https://poser.pugx.org/mediapart/lapresselibre/v/stable.png)](https://packagist.org/packages/mediapart/lapresselibre)
+
+Unofficial PHP SDK for the project [La Presse Libre](https://github.com/NextINpact/LaPresseLibreSDK). The difference with [the official package offered by NextINpact](https://github.com/NextINpact/LaPresseLibreSDK/tree/master/php) is compatibility with PSR4, PSR7 and php7 environment.
 
 ## Usage
 
@@ -21,12 +23,7 @@ $account_always_exists = function ($data, $is_testing) use ($public_key) {
 $verification = Endpoint::answer(Verification::class, $account_always_exists);
 ```
 
-Detailed examples for each endpoints are available :
-
-- [exemples/verification.php](exemples/verification.php)
-- [exemples/account-creation.php](exemples/account-creation.php)
-- [exemples/account-update.php](exemples/account-update.php)
-- [exemples/register.php](exemples/register.php)
+Detailed examples for each endpoints are available in [examples/](examples/).
 
 ## Installation
 

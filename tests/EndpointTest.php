@@ -37,4 +37,11 @@ class EndpointTest extends TestCase
 
         $endpoint = Endpoint::answer(Verification::class, 42);
     }
+
+    public function testListAll()
+    {
+        $list = Endpoint::all();
+
+        $this->assertEquals(['verification', 'account-creation', 'account-update'], array_keys($list));
+    }
 }
