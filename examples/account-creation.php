@@ -10,7 +10,7 @@ require 'bootstrap.php';
 
 use Mediapart\LaPresseLibre\Operation\AccountCreation;
 
-$handle(AccountCreation::class, function ($data, $is_testing) use ($public_key) {
+$handle(AccountCreation::class, function($data) use ($public_key) {
     return [
         'IsValid' => true,
         'PartenaireID' => $public_key,

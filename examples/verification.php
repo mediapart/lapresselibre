@@ -8,9 +8,10 @@
 
 require 'bootstrap.php';
 
-use Mediapart\LaPresseLibre\Operation\Verification;                                                                         
+use Mediapart\LaPresseLibre\Operation\Verification;
+use Mediapart\LaPresseLibre\Subscription\Type as SubscriptionType;
 
-$handle(Verification::class, function ($data, $is_testing) use ($public_key) {
+$handle(Verification::class, function($data) use ($public_key) {
     $now = new DateTime('next year');
 
     return [
