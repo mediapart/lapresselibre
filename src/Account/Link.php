@@ -18,7 +18,7 @@ use Mediapart\LaPresseLibre\Account\Repository;
 /**
  * @see https://github.com/NextINpact/LaPresseLibreSDK/wiki/Liaison-de-compte-utilisateur-par-redirection
  */
-class Liaison
+class Link
 {
     const RETURN_URL = 'https://beta.lapresselibre.fr/manage/link-result?lpl=%1$s&part=%2$s';
     const STATUS_SUCCESS = 1;
@@ -59,7 +59,7 @@ class Liaison
      * @param Account $logguedAccount
      * @return string
      */
-    public function generateUrl($lplUser, Account $logguedAccount)
+    public function generate($lplUser, Account $logguedAccount)
     {
         /* Le paramètre "lpluser" représente l'ID LPL de l'utilisateur qui 
            souhaite lier son compte. Il est chiffré en AES256 puis codé en 

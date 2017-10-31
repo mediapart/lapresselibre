@@ -13,11 +13,11 @@ namespace Mediapart\LaPresseLibre\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Mediapart\LaPresseLibre\Security\Encryption;
-use Mediapart\LaPresseLibre\Account\Liaison;
+use Mediapart\LaPresseLibre\Account\Link;
 use Mediapart\LaPresseLibre\Account\Account;
 use Mediapart\LaPresseLibre\Account\Repository;
 
-class LiaisonTest extends TestCase
+class LinkTest extends TestCase
 {
     public function testSuccessWithExistingAccount()
     {
@@ -38,14 +38,14 @@ class LiaisonTest extends TestCase
         ;
         $encryption
             ->method('encrypt')
-            ->with(['Guid' => $code, 'statut' => Liaison::STATUS_SUCCESS])
+            ->with(['Guid' => $code, 'statut' => Link::STATUS_SUCCESS])
             ->willReturn('response data')
         ;
 
-        $liaison = new Liaison($encryption, $repository, $public_key);
-        $link = $liaison->generateUrl('received data', $logguedAccount);
+        $link = new Link($encryption, $repository, $public_key);
+        $url = $link->generate('received data', $logguedAccount);
 
-        $this->assertEquals('https://beta.lapresselibre.fr/manage/link-result?lpl=response%20data&part=2', $link);
+        $this->assertEquals('https://beta.lapresselibre.fr/manage/link-result?lpl=response%20data&part=2', $url);
     }
 
     public function testConflict()
@@ -68,14 +68,14 @@ class LiaisonTest extends TestCase
         ;
         $encryption
             ->method('encrypt')
-            ->with(['Guid' => $code, 'statut' => Liaison::STATUS_CONFLICT])
+            ->with(['Guid' => $code, 'statut' => Link::STATUS_CONFLICT])
             ->willReturn('response data')
         ;
 
-        $liaison = new Liaison($encryption, $repository, $public_key);
-        $link = $liaison->generateUrl('received data', $logguedAccount);
+        $link = new Link($encryption, $repository, $public_key);
+        $url = $link->generate('received data', $logguedAccount);
 
-        $this->assertEquals('https://beta.lapresselibre.fr/manage/link-result?lpl=response%20data&part=2', $link);
+        $this->assertEquals('https://beta.lapresselibre.fr/manage/link-result?lpl=response%20data&part=2', $url);
     }
 
     public function testSuccessWithSavingNewLinkedAccount()
@@ -97,14 +97,14 @@ class LiaisonTest extends TestCase
         ;
         $encryption
             ->method('encrypt')
-            ->with(['Guid' => $code, 'statut' => Liaison::STATUS_SUCCESS])
+            ->with(['Guid' => $code, 'statut' => Link::STATUS_SUCCESS])
             ->willReturn('response data')
         ;
 
-        $liaison = new Liaison($encryption, $repository, $public_key);
-        $link = $liaison->generateUrl('received data', $logguedAccount);
+        $link = new Link($encryption, $repository, $public_key);
+        $url = $link->generate('received data', $logguedAccount);
 
-        $this->assertEquals('https://beta.lapresselibre.fr/manage/link-result?lpl=response%20data&part=2', $link);
+        $this->assertEquals('https://beta.lapresselibre.fr/manage/link-result?lpl=response%20data&part=2', $url);
     }
 
     public function testErrorWhenSavingNewLinkedAccount()
@@ -127,13 +127,13 @@ class LiaisonTest extends TestCase
         ;
         $encryption
             ->method('encrypt')
-            ->with(['Guid' => $code, 'statut' => Liaison::STATUS_FAILURE])
+            ->with(['Guid' => $code, 'statut' => Link::STATUS_FAILURE])
             ->willReturn('response data')
         ;
 
-        $liaison = new Liaison($encryption, $repository, $public_key);
-        $link = $liaison->generateUrl('received data', $logguedAccount);
+        $link = new Link($encryption, $repository, $public_key);
+        $url = $link->generate('received data', $logguedAccount);
 
-        $this->assertEquals('https://beta.lapresselibre.fr/manage/link-result?lpl=response%20data&part=2', $link);
+        $this->assertEquals('https://beta.lapresselibre.fr/manage/link-result?lpl=response%20data&part=2', $url);
     }
 }
