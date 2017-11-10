@@ -1,4 +1,5 @@
 /coverage/
 /vendor/
 /composer.lock
+/phpunit.xml
 /examples/credentials.txt
