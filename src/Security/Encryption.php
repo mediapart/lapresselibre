@@ -100,7 +100,10 @@ class Encryption implements LoggerAwareInterface
             $options,
             $this->iv
         );
-        $result = json_decode(rtrim($result, "\0"), true);
+        $result = rtrim($result, "\0");
+
+        $decodedJson = json_decode($result, true);
+        $result = null!==$decodedJson ? $decodedJson : $result;
 
         $this->logger->debug('Uncrypting message', [$message, $result]);
 
