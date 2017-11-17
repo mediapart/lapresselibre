@@ -53,6 +53,7 @@ class Encryption implements LoggerAwareInterface
         if (null == $iv) {
             $iv_len = openssl_cipher_iv_length($this->method);
             $iv = openssl_random_pseudo_bytes($iv_len);
+            var_dump($iv);
         }
 
         $this->password = $password;
@@ -100,7 +101,10 @@ class Encryption implements LoggerAwareInterface
             $options,
             $this->iv
         );
-        $result = json_decode(rtrim($result, "\0"), true);
+        $result = rtrim($result, "\0");
+
+        $decodedJson = json_decode($result, true);
+        $result = null!==$decodedJson ? $decodedJson : $result;
 
         $this->logger->debug('Uncrypting message', [$message, $result]);
 
