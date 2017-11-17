@@ -53,7 +53,6 @@ class Encryption implements LoggerAwareInterface
         if (null == $iv) {
             $iv_len = openssl_cipher_iv_length($this->method);
             $iv = openssl_random_pseudo_bytes($iv_len);
-            var_dump($iv);
         }
 
         $this->password = $password;
