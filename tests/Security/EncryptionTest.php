@@ -37,4 +37,15 @@ class EncryptionTest extends TestCase
 
         $this->assertEquals('lorem ipsum dolor', $decrypted);
     }
+
+    public function testIv()
+    {
+    	$string = 'loremp ipsum dolor';
+
+        $encryption = new Encryption('passphrase', null, 0);
+        $encrypted = $encryption->encrypt($string);
+
+        $this->assertNotEquals('', $encrypted);
+        $this->assertNotEquals($string, $encrypted);
+    }
 }
